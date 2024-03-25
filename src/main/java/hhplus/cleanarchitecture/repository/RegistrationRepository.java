@@ -8,5 +8,5 @@ public interface RegistrationRepository {
 
     public void save(Registration registration);
 
-    public List<Registration> findAllRegistrationsByUserId(Long userId);
+    public List<Registration> findRegistrationsByUserId(Long userId);
 }

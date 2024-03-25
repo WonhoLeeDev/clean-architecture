@@ -18,9 +18,9 @@ public class JpaRegistrationRepository implements RegistrationRepository{
     }
 
     @Override
-    public List<Registration> findAllRegistrationsByUserId(Long userId) {
-        return em.createQuery("select r from Registration r where r.user = :user", Registration.class)
-                .setParameter("user", userId)
+    public List<Registration> findRegistrationsByUserId(Long userId) {
+        return em.createQuery("select r from Registration r where r.user.id = :userId", Registration.class)
+                .setParameter("userId", userId)
                 .getResultList();
     }
 }

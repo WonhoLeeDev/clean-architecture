@@ -1,14 +1,19 @@
 package hhplus.cleanarchitecture.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import hhplus.cleanarchitecture.controller.LectureDto;
+import hhplus.cleanarchitecture.controller.RegistrationDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@ToString
 @NoArgsConstructor
 public class Lecture {
 
@@ -25,5 +30,12 @@ public class Lecture {
         this.id = id;
         this.registrations = registrations;
         this.name = name;
+    }
+
+    public static LectureDto toDto(Lecture lecture) {
+        return new LectureDto(
+                lecture.getId(),
+                lecture.getName()
+        );
     }
 }
