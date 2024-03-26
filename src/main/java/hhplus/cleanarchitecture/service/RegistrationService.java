@@ -1,6 +1,6 @@
 package hhplus.cleanarchitecture.service;
 
-import hhplus.cleanarchitecture.controller.RegistrationDto;
+import hhplus.cleanarchitecture.controller.dto.RegistrationDto;
 import hhplus.cleanarchitecture.domain.Lecture;
 import hhplus.cleanarchitecture.domain.Registration;
 import hhplus.cleanarchitecture.domain.User;
@@ -38,5 +38,11 @@ public class RegistrationService {
                 .stream()
                 .map(Registration::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public boolean isLectureRegistered(Long userId, Long lectureId) {
+        return registrationRepository.findRegistrationsByUserId(userId)
+                .stream()
+                .anyMatch(registration -> registration.getLecture().getId().equals(lectureId));
     }
 }
