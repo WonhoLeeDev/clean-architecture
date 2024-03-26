@@ -36,6 +36,10 @@ public class RegistrationService {
                 throw new RuntimeException("수강인원 초과");
             }
 
+            if (this.getRegistrationStatus(userId, lectureId).equals(RegistrationStatus.REGISTERED)) {
+                throw new IllegalStateException("이미 등록된 강의입니다.");
+            }
+
             User user = userRepository.findUserByUserId(userId);
             Lecture lecture = lectureRepository.findLectureByLectureId(lectureId);
 
@@ -52,7 +56,7 @@ public class RegistrationService {
                 .collect(Collectors.toList());
     }
 
-    public RegistrationStatus isLectureRegistered(Long userId, Long lectureId) {
+    public RegistrationStatus getRegistrationStatus(Long userId, Long lectureId) {
         return registrationRepository.findRegistrationsByUserId(userId)
                 .stream()
                 .anyMatch(registration -> registration.getLecture().getId().equals(lectureId))

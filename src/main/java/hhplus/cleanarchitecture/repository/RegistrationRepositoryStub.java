@@ -14,6 +14,7 @@ public class RegistrationRepositoryStub implements RegistrationRepository {
     @Override
     public void save(Registration registration) {
         this.registration = registration;
+        this.registrations.add(registration);
     }
 
     @Override

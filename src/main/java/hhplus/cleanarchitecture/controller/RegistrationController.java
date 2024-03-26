@@ -29,7 +29,7 @@ public class RegistrationController {
      */
     @GetMapping("{id}/lecture/{lectureId}")
     public RegistrationStatus lecture(@PathVariable Long id, @PathVariable Long lectureId) {
-        return registrationService.isLectureRegistered(id, lectureId);
+        return registrationService.getRegistrationStatus(id, lectureId);
     }
 
     /**
