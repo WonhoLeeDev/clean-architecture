@@ -1,5 +1,6 @@
 package hhplus.cleanarchitecture.service;
 
+import hhplus.cleanarchitecture.controller.dto.LectureDto;
 import hhplus.cleanarchitecture.controller.dto.RegistrationDto;
 import hhplus.cleanarchitecture.domain.Lecture;
 import hhplus.cleanarchitecture.domain.Registration;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,14 +27,22 @@ public class RegistrationService {
     private final UserRepository userRepository;
     private final LectureRepository lectureRepository;
 
+    private final ConcurrentHashMap<Long, Object> lockMap = new ConcurrentHashMap<>();
+
     @Transactional
     public RegistrationDto register(Long userId, Long lectureId) {
-        User user = userRepository.findUserByUserId(userId);
-        Lecture lecture = lectureRepository.findLectureByLectureId(lectureId);
+        return (RegistrationDto) lockMap.compute(userId, (k, v) -> {
+            if (registrationRepository.findRegistrationsByLectureId(lectureId).size() == LectureDto.MAX_REGISTRATION_NUM) {
+                throw new RuntimeException("수강인원 초과");
+            }
 
-        Registration registration = Registration.createRegistration(user, lecture);
-        registrationRepository.save(registration);
-        return Registration.toDto(registration);
+            User user = userRepository.findUserByUserId(userId);
+            Lecture lecture = lectureRepository.findLectureByLectureId(lectureId);
+
+            Registration registration = Registration.createRegistration(user, lecture);
+            registrationRepository.save(registration);
+            return Registration.toDto(registration);
+        });
     }
 
     public List<RegistrationDto> findRegistrationsByUserId(Long userId) {

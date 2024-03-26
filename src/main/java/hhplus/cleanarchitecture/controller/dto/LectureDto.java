@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class LectureDto {
+    public final static int MAX_REGISTRATION_NUM = 30;
     private Long id;
     private String name;
 }

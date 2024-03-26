@@ -9,4 +9,6 @@ public interface RegistrationRepository {
     public void save(Registration registration);
 
     public List<Registration> findRegistrationsByUserId(Long userId);
+
+    public List<Registration> findRegistrationsByLectureId(Long lectureId);
 }
