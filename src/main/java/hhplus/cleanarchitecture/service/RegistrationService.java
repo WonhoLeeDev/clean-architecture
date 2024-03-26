@@ -3,6 +3,7 @@ package hhplus.cleanarchitecture.service;
 import hhplus.cleanarchitecture.controller.dto.RegistrationDto;
 import hhplus.cleanarchitecture.domain.Lecture;
 import hhplus.cleanarchitecture.domain.Registration;
+import hhplus.cleanarchitecture.domain.RegistrationStatus;
 import hhplus.cleanarchitecture.domain.User;
 import hhplus.cleanarchitecture.repository.LectureRepository;
 import hhplus.cleanarchitecture.repository.RegistrationRepository;
@@ -40,9 +41,10 @@ public class RegistrationService {
                 .collect(Collectors.toList());
     }
 
-    public boolean isLectureRegistered(Long userId, Long lectureId) {
+    public RegistrationStatus isLectureRegistered(Long userId, Long lectureId) {
         return registrationRepository.findRegistrationsByUserId(userId)
                 .stream()
-                .anyMatch(registration -> registration.getLecture().getId().equals(lectureId));
+                .anyMatch(registration -> registration.getLecture().getId().equals(lectureId))
+                ? RegistrationStatus.REGISTERED : RegistrationStatus.UNREGISTERED;
     }
 }

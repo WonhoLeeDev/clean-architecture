@@ -1,5 +1,6 @@
 package hhplus.cleanarchitecture.controller.dto;
 
+import hhplus.cleanarchitecture.domain.RegistrationStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;

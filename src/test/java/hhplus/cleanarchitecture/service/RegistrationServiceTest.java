@@ -1,16 +1,11 @@
 package hhplus.cleanarchitecture.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import hhplus.cleanarchitecture.controller.RegistrationDto;
-import hhplus.cleanarchitecture.domain.Registration;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @SpringBootTest
 @Transactional
@@ -27,7 +22,6 @@ class RegistrationServiceTest {
     void findRegistrationsTest() throws JsonProcessingException {
         registrationService.register(1L, 3L);
         registrationService.findRegistrationsByUserId(1L);
-        Assertions.assertThat()
     }
 
 }

@@ -1,6 +1,7 @@
 package hhplus.cleanarchitecture.controller;
 
 import hhplus.cleanarchitecture.controller.dto.RegistrationDto;
+import hhplus.cleanarchitecture.domain.RegistrationStatus;
 import hhplus.cleanarchitecture.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,14 +28,14 @@ public class RegistrationController {
      * TODO - 특정 특강 신청 여부 조회
      */
     @GetMapping("{id}/lecture/{lectureId}")
-    public boolean lecture(@PathVariable Long id, @PathVariable Long lectureId) {
+    public RegistrationStatus lecture(@PathVariable Long id, @PathVariable Long lectureId) {
         return registrationService.isLectureRegistered(id, lectureId);
     }
 
     /**
      * TODO - 특강 신청
      */
-    @PostMapping("{id}/register")
+    @PostMapping("{id}/lecture")
     public RegistrationDto register(@PathVariable Long id, @RequestBody Long lectureId) {
         return registrationService.register(id, lectureId);
     }
