@@ -1,6 +1,6 @@
 package hhplus.cleanarchitecture.domain;
 
-import hhplus.cleanarchitecture.controller.RegistrationDto;
+import hhplus.cleanarchitecture.controller.dto.RegistrationDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

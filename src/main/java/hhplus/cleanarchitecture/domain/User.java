@@ -1,8 +1,6 @@
 package hhplus.cleanarchitecture.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import hhplus.cleanarchitecture.controller.RegistrationDto;
-import hhplus.cleanarchitecture.controller.UserDto;
+import hhplus.cleanarchitecture.controller.dto.UserDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

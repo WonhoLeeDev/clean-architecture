@@ -1,4 +1,4 @@
-package hhplus.cleanarchitecture.controller;
+package hhplus.cleanarchitecture.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
