@@ -1,6 +1,7 @@
-package hhplus.cleanarchitecture.repository;
+package hhplus.cleanarchitecture.repository.stub;
 
 import hhplus.cleanarchitecture.domain.Registration;
+import hhplus.cleanarchitecture.repository.RegistrationRepository;
 import lombok.Getter;
 
 import java.util.ArrayList;

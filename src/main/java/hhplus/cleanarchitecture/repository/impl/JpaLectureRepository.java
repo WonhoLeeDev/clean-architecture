@@ -1,6 +1,7 @@
-package hhplus.cleanarchitecture.repository;
+package hhplus.cleanarchitecture.repository.impl;
 
 import hhplus.cleanarchitecture.domain.Lecture;
+import hhplus.cleanarchitecture.repository.LectureRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

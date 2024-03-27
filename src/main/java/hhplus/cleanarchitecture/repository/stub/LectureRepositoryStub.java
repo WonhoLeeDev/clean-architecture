@@ -1,6 +1,7 @@
-package hhplus.cleanarchitecture.repository;
+package hhplus.cleanarchitecture.repository.stub;
 
 import hhplus.cleanarchitecture.domain.Lecture;
+import hhplus.cleanarchitecture.repository.LectureRepository;
 
 import java.util.List;
 
